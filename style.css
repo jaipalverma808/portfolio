@@ -484,11 +484,19 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 .featured-project:hover { box-shadow: var(--shadow-md); }
 
 .featured-visual {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-soft);
   border-radius: var(--radius);
+  overflow: hidden;
+}
+.featured-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .featured-icon {
   width: 62%;
@@ -546,21 +554,37 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
 .project-card-visual {
   height: 150px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-soft);
   overflow: hidden;
 }
-.project-card-visual svg {
+.project-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.project-card:hover .project-card-visual img { transform: scale(1.05); }
+.project-visual-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.project-visual-fallback svg {
   width: 78px;
   stroke: var(--accent);
   stroke-width: 2.6;
   fill: none;
   transition: transform 0.3s ease;
 }
-.project-card-visual rect { fill: var(--surface); }
-.project-card:hover .project-card-visual svg { transform: scale(1.08); }
+.project-visual-fallback rect { fill: var(--surface); }
+.project-card:hover .project-visual-fallback svg { transform: scale(1.08); }
 
 .project-card-body { padding: 26px 24px; }
 .project-card-body h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
